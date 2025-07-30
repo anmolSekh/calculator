@@ -90,13 +90,18 @@ plus.addEventListener("click", ()=> {
     if(["+", "-", "x", "/"].includes(operator)) {
         //do equals functionality
         b = document.getElementById("display").value; //value of display after operator press
-        // operator = "/";
-        console.log(a + " " + operator + " " + b + "=");
-        total = operate(a,b, operator); //make sure operator changes value with above button presses
-        //display value
-        a = total;
-        document.getElementById("display").value = "";
-        document.getElementById("display").textContent = a;
+        if(operator == "/" & b == "0") {
+            // document.textContent == "ERROR";
+            total = "";
+            document.getElementById("display").value = total;
+            document.getElementById("display").textContent = "ERROR"; 
+        } else {
+            console.log(a + " " + operator + " " + b + "=");
+            total = operate(a,b, operator); //make sure operator changes value with above button presses
+            a = total;
+            document.getElementById("display").value = "";
+            document.getElementById("display").textContent = a;   
+        }
     } else {
         // if(a == undefined) {
             
@@ -116,13 +121,18 @@ minus.addEventListener("click", ()=> {
     if(["+", "-", "x", "/"].includes(operator)) {
         //do equals functionality
         b = document.getElementById("display").value; //value of display after operator press
-        // operator = "/";
-        console.log(a + " " + operator + " " + b + "=");
-        total = operate(a,b, operator); //make sure operator changes value with above button presses
-        //display value
-        a = total;
-        document.getElementById("display").value = "";
-        document.getElementById("display").textContent = a;
+        if(operator == "/" & b == "0") {
+            // document.textContent == "ERROR";
+            total = "";
+            document.getElementById("display").value = total;
+            document.getElementById("display").textContent = "ERROR"; 
+        } else {
+            console.log(a + " " + operator + " " + b + "=");
+            total = operate(a,b, operator); //make sure operator changes value with above button presses
+            a = total;
+            document.getElementById("display").value = "";
+            document.getElementById("display").textContent = a;   
+        }
     } else {
         // if(a == undefined) {
             
@@ -140,13 +150,18 @@ mult.addEventListener("click", ()=> {
     if(["+", "-", "x", "/"].includes(operator)) {
         //do equals functionality
         b = document.getElementById("display").value; //value of display after operator press
-        // operator = "/";
-        console.log(a + " " + operator + " " + b + "=");
-        total = operate(a,b, operator); //make sure operator changes value with above button presses
-        //display value
-        a = total;
-        document.getElementById("display").value = "";
-        document.getElementById("display").textContent = a;
+        if(operator == "/" & b == "0") {
+            // document.textContent == "ERROR";
+            total = "";
+            document.getElementById("display").value = total;
+            document.getElementById("display").textContent = "ERROR"; 
+        } else {
+            console.log(a + " " + operator + " " + b + "=");
+            total = operate(a,b, operator); //make sure operator changes value with above button presses
+            a = total;
+            document.getElementById("display").value = "";
+            document.getElementById("display").textContent = a;   
+        }
     } else {
         // if(a == undefined) {
             
@@ -164,13 +179,20 @@ div.addEventListener("click", ()=> {
     if(["+", "-", "x", "/"].includes(operator)) {
         //do equals functionality
         b = document.getElementById("display").value; //value of display after operator press
-        // operator = "/";
-        console.log(a + " " + operator + " " + b + "=");
-        total = operate(a,b, operator); //make sure operator changes value with above button presses
+        if(operator == "/" & b == "0") {
+            // document.textContent == "ERROR";
+            total = "";
+            document.getElementById("display").value = total;
+            document.getElementById("display").textContent = "ERROR"; 
+        } else {
+            console.log(a + " " + operator + " " + b + "=");
+            total = operate(a,b, operator); //make sure operator changes value with above button presses
+            a = total;
+            document.getElementById("display").value = "";
+            document.getElementById("display").textContent = a;   
+        }
         //display value
-        a = total;
-        document.getElementById("display").value = "";
-        document.getElementById("display").textContent = a;
+        
     } else {
         // if(a == undefined) {
             
@@ -190,25 +212,41 @@ equal.addEventListener("click", ()=> {
         total = document.getElementById("display").value;
     } else {
         b = document.getElementById("display").value; //value of display after operator press
-        // operator = "/";
-        console.log(a + " " + operator + " " + b + "=");
-        total = operate(a,b, operator);
+        if(operator == "/" & b == "0") {
+            // document.textContent == "ERROR";
+            total = "";
+            document.getElementById("display").value = total;
+            document.getElementById("display").textContent = "ERROR"; 
+        } else {
+            console.log(a + " " + operator + " " + b + "=");
+            total = operate(a,b, operator); //make sure operator changes value with above button presses
+            document.getElementById("display").value = total;
+            document.getElementById("display").textContent = total;    
+        }
     }
     operator = "=";
-    document.getElementById("display").value = total;
-    document.getElementById("display").textContent = total;
+    
     // a = total; //reset values after pressing, add functionality where pressing an operator after equals will keep the total as a;
     b = undefined;
     // a = total;
     // a = total; //display total;
     console.log(total);
 })
-
+const clear = document.createElement("button");
+clear.textContent = "C";
+clear.addEventListener("click", ()=> {
+    document.getElementById("display").value = "";
+    document.getElementById("display").textContent = document.getElementById("display").value;
+    total = 0;
+    a = undefined;
+    b = undefined;
+})
 btns.appendChild(plus);
 btns.appendChild(minus);
 btns.appendChild(mult);
 btns.appendChild(div);
 btns.appendChild(equal);
+btns.appendChild(clear);
 content.appendChild(btns);
 
 // const 
