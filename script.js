@@ -326,12 +326,26 @@ clear.addEventListener("click", ()=> {
     b = undefined;
     operator = "unupd";
 })
+
+const back = document.createElement("button");
+back.textContent = "<-"
+back.addEventListener("click", ()=> {
+    if(document.getElementById("display").value != "") {
+        let old = document.getElementById("display").value;
+        let oldstr = old.toString();
+        oldstr = oldstr.slice(0, -1); //remove last char in string
+        document.getElementById("display").value = parseFloat(oldstr);
+        document.getElementById("display").textContent = document.getElementById("display").value;
+    }
+    
+    
+})
 btns.appendChild(plus);
 btns.appendChild(minus);
 btns.appendChild(mult);
 btns.appendChild(div);
 btns.appendChild(equal);
-// btns.appendChild(decimal);
+btns.appendChild(back);
 btns.appendChild(clear);
 content.appendChild(btns);
 
