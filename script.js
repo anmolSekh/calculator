@@ -35,6 +35,13 @@ function operate(x,y, op) {
     }
         
 }
+// function checkOverflow(str) {
+//     let number = parseFloat(str);
+//     const decimalPart = str.split('.')[1];
+//     if(str.length>7 & str.includes(".")) {
+        
+//     }
+// }
 function operation(a,b,operator) {
     if(["+", "-", "x", "/"].includes(operator)) {
         //do equals functionality
@@ -47,7 +54,7 @@ function operation(a,b,operator) {
         } else {
             console.log(a + " " + operator + " " + b + "=");
             total = operate(a,b, operator); //make sure operator changes value with above button presses
-            a = total;
+            a = parseFloat(total.toFixed(4));
             document.getElementById("display").value = "";
             document.getElementById("display").textContent = a;   
         }
@@ -127,7 +134,7 @@ plus.addEventListener("click", ()=> {
             } else {
                 console.log(a + " " + operator + " " + b + "=");
                 total = operate(a,b, operator); //make sure operator changes value with above button presses
-                a = total;
+                a = parseFloat(total.toFixed(4));
                 document.getElementById("display").value = "";
                 document.getElementById("display").textContent = a;   
             }
@@ -162,7 +169,7 @@ minus.addEventListener("click", ()=> {
             } else {
                 console.log(a + " " + operator + " " + b + "=");
                 total = operate(a,b, operator); //make sure operator changes value with above button presses
-                a = total;
+                a = parseFloat(total.toFixed(4));
                 document.getElementById("display").value = "";
                 document.getElementById("display").textContent = a;   
             }
@@ -198,7 +205,7 @@ mult.addEventListener("click", ()=> {
             } else {
                 console.log(a + " " + operator + " " + b + "=");
                 total = operate(a,b, operator); //make sure operator changes value with above button presses
-                a = total;
+                a = parseFloat(total.toFixed(4));
                 document.getElementById("display").value = "";
                 document.getElementById("display").textContent = a;   
             }
@@ -232,7 +239,7 @@ div.addEventListener("click", ()=> {
             } else {
                 console.log(a + " " + operator + " " + b + "=");
                 total = operate(a,b, operator); //make sure operator changes value with above button presses
-                a = total;
+                a = parseFloat(total.toFixed(4));
                 document.getElementById("display").value = "";
                 document.getElementById("display").textContent = a;   
             }
@@ -256,7 +263,7 @@ equal.textContent = "=";
 equal.addEventListener("click", ()=> {
     if(operator == "=") {
         total = document.getElementById("display").value;
-    } else {
+    } else if(["+", "-", "x", "/"].includes(operator)) {
         b = document.getElementById("display").value; //value of display after operator press
         if(operator == "/" & b == "0") {
             // document.textContent == "ERROR";
@@ -266,8 +273,9 @@ equal.addEventListener("click", ()=> {
         } else {
             console.log(a + " " + operator + " " + b + "=");
             total = operate(a,b, operator); //make sure operator changes value with above button presses
-            document.getElementById("display").value = total;
-            document.getElementById("display").textContent = total;    
+            totalFixed = parseFloat(total.toFixed(4));
+            document.getElementById("display").value = totalFixed;
+            document.getElementById("display").textContent = totalFixed;    
         }
     }
     operator = "=";
@@ -278,6 +286,36 @@ equal.addEventListener("click", ()=> {
     // a = total; //display total;
     console.log(total);
 })
+// const decimal = document.createElement("button");
+// decimal.value = ".";
+// decimal.textContent = ".";
+// decimal.addEventListener("click", function(e) {
+//     let disval = document.getElementById("display").value;
+//     let old = undefined;
+//     // console.log(typeof(disval));
+//     if(!disval.toString().includes(".")) {
+//         // console.log(typeof(disval));
+//         if(operator == "=") {
+//             //reset display
+//             document.getElementById("display").value = "";
+//             document.getElementById("display").textContent = document.getElementById("display").value;
+//             a = undefined;
+//             operator = "unupd";
+//         }
+//         if(document.getElementById("display").value == "") {
+//             old = "0";
+//         } else {
+//             old = document.getElementById("display").value;
+//         }
+//         //if display contains total do not append to total;
+//         // console.log(e.target.value);
+//         // console.log(old);
+//         document.getElementById("display").value = parseFloat("" + old + e.target.value);
+//         // console.log("" + old + e.target.value)
+//         //To add decimal button functionilty, need to change where number is parsed
+//         document.getElementById("display").textContent = document.getElementById("display").value;
+//     }
+// })
 const clear = document.createElement("button");
 clear.textContent = "C";
 clear.addEventListener("click", ()=> {
@@ -293,6 +331,7 @@ btns.appendChild(minus);
 btns.appendChild(mult);
 btns.appendChild(div);
 btns.appendChild(equal);
+// btns.appendChild(decimal);
 btns.appendChild(clear);
 content.appendChild(btns);
 
